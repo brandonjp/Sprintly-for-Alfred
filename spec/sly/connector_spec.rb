@@ -12,6 +12,12 @@ describe Sly::Connector do
       { this: :that }
     end
 
+    before do
+      response = double(:response)
+      response.stub_chain(:class, :body_permitted?)
+      Net::HTTP.stub(start: response)
+    end
+
     it "sets the limit param" do
       connector.authenticated_request(url, params)
       params[:limit].should == 100
@@ -74,6 +80,7 @@ describe Sly::Connector do
     end
 
     it "sets children parameter" do
+      connector.stub(:authenticated_request)
       connector.items(filters)
       filters[:children].should be_true
     end
