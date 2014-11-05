@@ -89,16 +89,24 @@ class Sly::Item < Sly::Object
   end
 
   def alfred_result
-    subtitle = "Assigned to #{@assigned_to.full_name}  "
+    # title: #NUMBER TITLE
+    title = "##{@number} "+self.title
 
+    # subtitle: ASSIGNEE * #TAGS (CREATOR)
+    subtitle = "#{@assigned_to.full_name} *"
     @tags.each { |tag| subtitle << " #"+tag }
-
+    subtitle << " (#{created_by.full_name})"
+    
     icon = "images/#{@type}-#{@score}.png".downcase
-    Sly::WorkflowUtils.item("#"+@number.to_s, self.title, subtitle, icon)
+    Sly::WorkflowUtils.item("#"+@number.to_s, title, subtitle, icon)
+  end
+
+  def copy_number
+    "#{self.number}"
   end
 
   def git_branch
-    type = (self.type == "story") ? "feature" : self.type
+    type = ["story"].include?(self.type) ? "feature" : self.type
     slug = self.slug
 
     if(slug.length > 50)
@@ -106,7 +114,7 @@ class Sly::Item < Sly::Object
       slug = self.slug[0,truncate_to]
     end
 
-    "git checkout -b #{type}/#{self.number}-#{slug}"
+    "git checkout develop && git pull origin develop && git checkout -b #{type}/#{self.number}-#{slug}"
   end
 
   protected

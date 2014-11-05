@@ -6,6 +6,17 @@
 	<string>com.samrayner.Sprintly</string>
 	<key>connections</key>
 	<dict>
+		<key>1F8A9162-749B-4A73-A0D7-E6DBE82BAB42</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4A1F1B3F-A822-488D-BFC1-DBC875F2E5F9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>3229B626-1635-44CE-A6CA-78CD03D716F4</key>
 		<array>
 			<dict>
@@ -198,6 +209,14 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>1F8A9162-749B-4A73-A0D7-E6DBE82BAB42</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Copy item number</string>
 			</dict>
 		</array>
 		<key>E3E286F1-0541-4FE5-88D7-7F1E737B13BF</key>
@@ -696,6 +715,27 @@ load 'run_command.rb'</string>
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
+				<string>COMMAND = "copy_number"
+QUERY = "{query}"
+load 'run_command.rb'
+
+puts "Item number copied to clipboard"</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1F8A9162-749B-4A73-A0D7-E6DBE82BAB42</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>script</key>
 				<string>COMMAND = "move_item"
 QUERY = "{query} completed"
 load 'run_command.rb'</string>
@@ -715,6 +755,23 @@ load 'run_command.rb'</string>
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
+				<string>if application "Tictoc" is running then	tell application "Tictoc" to stop task "{query}"end if</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>EA100F17-4372-455E-9B7E-C7CE3F041974</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>script</key>
 				<string>COMMAND = "tictoc_task"
 QUERY = "{query}"
 load 'run_command.rb'</string>
@@ -725,23 +782,6 @@ load 'run_command.rb'</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>E3E286F1-0541-4FE5-88D7-7F1E737B13BF</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>4</integer>
-				<key>script</key>
-				<string>if application "Tictoc" is running then	tell application "Tictoc" to stop task "{query}"end if</string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.script</string>
-			<key>uid</key>
-			<string>EA100F17-4372-455E-9B7E-C7CE3F041974</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -790,6 +830,11 @@ Story titles can be entered shorthand as: _**aa** user **iw** this **st** that_
 `tab` has the same effect as `return`</string>
 	<key>uidata</key>
 	<dict>
+		<key>1F8A9162-749B-4A73-A0D7-E6DBE82BAB42</key>
+		<dict>
+			<key>ypos</key>
+			<real>810</real>
+		</dict>
 		<key>3229B626-1635-44CE-A6CA-78CD03D716F4</key>
 		<dict>
 			<key>ypos</key>
@@ -843,7 +888,7 @@ Story titles can be entered shorthand as: _**aa** user **iw** this **st** that_
 		<key>9E24F479-497F-4B26-A8A8-3BCF2554E43B</key>
 		<dict>
 			<key>ypos</key>
-			<real>810</real>
+			<real>910</real>
 		</dict>
 		<key>A0C0D92C-2BCE-4BA0-8D52-F83254B29506</key>
 		<dict>
@@ -878,7 +923,7 @@ Story titles can be entered shorthand as: _**aa** user **iw** this **st** that_
 		<key>E3E286F1-0541-4FE5-88D7-7F1E737B13BF</key>
 		<dict>
 			<key>ypos</key>
-			<real>910</real>
+			<real>1010</real>
 		</dict>
 		<key>EA100F17-4372-455E-9B7E-C7CE3F041974</key>
 		<dict>

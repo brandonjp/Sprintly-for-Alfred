@@ -1,4 +1,5 @@
 sprintly_details.rb
+packal
 
 *.gem
 *.rbc
@@ -18,3 +19,7 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+.DS_Store
+.DS_Store?
+.Spotlight-V100
